@@ -25,6 +25,8 @@
         <javax.validation-version>1.1.0.Final</javax.validation-version>
         <commons-io-version>2.4</commons-io-version>
         <mysql-version>5.1.37</mysql-version>
+        <commons-dbcp2-version>2.0</commons-dbcp2-version>
+        <hibernate-core-version>4.3.5.Final</hibernate-core-version>
     </properties>
 
 
@@ -167,6 +169,18 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>${commons-dbcp2-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate-core-version}</version>
         </dependency>
 
     </dependencies>
