@@ -12,10 +12,10 @@ app.controller("ctrlExpenses", ["$rootScope", "$scope", "Restangular", function 
 	// Update the headings
 	$rootScope.mainTitle = "Expenses";
 	$rootScope.mainHeading = "Expenses";
-	
+
 	// Update the tab sections
 	$rootScope.selectTabSection("expenses", 0);
-	
+
 	$scope.dateOptions = {
 		changeMonth: true,
 		changeYear: true,
