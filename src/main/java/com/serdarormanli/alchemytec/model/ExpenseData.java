@@ -10,7 +10,7 @@ public class ExpenseData {
     private static final BigDecimal VAT = BigDecimal.valueOf(20L);
     private static final BigDecimal TOTAL = BigDecimal.valueOf(100L).add(VAT);
 
-    private Date expenseDate;
+    private Date date;
     private String reason;
     private BigDecimal amount;
     private BigDecimal vat;
@@ -18,19 +18,19 @@ public class ExpenseData {
     public ExpenseData() {
     }
 
-    public ExpenseData(Date expenseDate, String reason, BigDecimal amount, BigDecimal vat) {
-        this.expenseDate = expenseDate;
+    public ExpenseData(Date date, String reason, BigDecimal amount, BigDecimal vat) {
+        this.date = date;
         this.reason = reason;
         this.amount = amount;
         this.vat = vat;
     }
 
-    public Date getExpenseDate() {
-        return expenseDate;
+    public Date getDate() {
+        return date;
     }
 
-    public void setExpenseDate(Date expenseDate) {
-        this.expenseDate = expenseDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getReason() {
@@ -62,9 +62,9 @@ public class ExpenseData {
         Expense result = new Expense();
 
         result.amount = this.amount;
-        result.expenseDate = this.expenseDate;
+        result.expenseDate = this.date;
         result.reason = this.reason;
-        result.vat = Optional.ofNullable(this.vat).orElse(this.amount.multiply(VAT).divide(TOTAL));//(120*20)/120
+        result.vat = Optional.ofNullable(this.vat).orElse(this.amount.multiply(VAT).divide(TOTAL));
 
         return result;
     }

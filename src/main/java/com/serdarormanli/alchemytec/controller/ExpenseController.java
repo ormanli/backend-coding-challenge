@@ -1,5 +1,6 @@
 package com.serdarormanli.alchemytec.controller;
 
+import com.serdarormanli.alchemytec.model.Expense;
 import com.serdarormanli.alchemytec.model.ExpenseData;
 import com.serdarormanli.alchemytec.service.ExpenseService;
 
@@ -24,8 +25,8 @@ public class ExpenseController {
     public
     @ResponseBody
     ExpenseData insertNewExpense(@RequestBody ExpenseData request) {
-        expenseService.insertNewExpense(request.convertToExpense());
-        return request;
+        Expense expense = expenseService.insertNewExpense(request.convertToExpense());
+        return ExpenseData.convertToThis(expense);
     }
 
     @RequestMapping(value = "/expenses", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
