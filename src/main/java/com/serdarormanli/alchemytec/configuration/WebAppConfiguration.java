@@ -11,6 +11,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @ComponentScan("com.serdarormanli.alchemytec")
 public class WebAppConfiguration extends WebMvcConfigurerAdapter {
 
+    /**
+     * Maps static file folder resources to root
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("/WEB-INF/resources/");

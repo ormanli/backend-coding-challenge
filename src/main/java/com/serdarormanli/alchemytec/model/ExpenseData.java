@@ -6,12 +6,20 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Optional;
 
+import javax.validation.constraints.NotNull;
+
+/***
+ * Rest input output class
+ */
 public class ExpenseData {
     private static final BigDecimal VAT = BigDecimal.valueOf(20L);
     private static final BigDecimal TOTAL = BigDecimal.valueOf(100L).add(VAT);
 
+    @NotNull(message = "Date cannot be null")
     private Date date;
+    @NotNull(message = "Reason cannot be null")
     private String reason;
+    @NotNull(message = "Amount cannot be null")
     private BigDecimal amount;
     private BigDecimal vat;
 
@@ -57,6 +65,9 @@ public class ExpenseData {
         this.vat = vat;
     }
 
+    /**
+     * Converts from rest expense to database expense
+     */
     @JsonIgnore
     public Expense convertToExpense() {
         Expense result = new Expense();
@@ -64,11 +75,15 @@ public class ExpenseData {
         result.amount = this.amount;
         result.expenseDate = this.date;
         result.reason = this.reason;
+        //Optional used if vat is not exists at input
         result.vat = Optional.ofNullable(this.vat).orElse(this.amount.multiply(VAT).divide(TOTAL));
 
         return result;
     }
 
+    /**
+     * Converts from database expense to database expense
+     */
     @JsonIgnore
     public static ExpenseData convertToThis(Expense expense) {
         return new ExpenseData(expense.expenseDate, expense.reason, expense.amount, expense.vat);

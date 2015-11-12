@@ -1,3 +1,36 @@
+Requirements
+====
+* Java 8
+* MySQL
+* Maven 3.1>
+
+How To Build
+====
+This pom configuration outputs a war file that can both executable and deployable. 
+
+    mvn clean package
+This command may need administrator rights to execute because of `frontend-maven-plugin`. I used this plugin for gulp support. You need gulp if there is any change in frontend stuff. If there is any error please disable related goals. 
+
+How To Run
+====
+From maven
+------
+Go to project folder.
+
+    mvn spring-boot:run
+From war
+------
+
+    java -jar alchemytec-1.0.war
+
+Notes
+====
+* Modify [application.properties](https://github.com/ormanli/backend-coding-challenge/blob/master/src/main/resources/application.properties) for db properties.
+* This application creates database tables automatic at boot. You don't need any sql script. Please configure database properties.
+
+
+---
+
 Goal
 ====
 Produce a simple web-app backend to complement the supplied front-end code.
