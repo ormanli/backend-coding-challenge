@@ -17,9 +17,49 @@ import javax.persistence.Table;
 public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
-    Date expenseDate;
-    String reason;
-    BigDecimal amount;
-    BigDecimal vat;
+    private Long id;
+    private Date expenseDate;
+    private String reason;
+    private BigDecimal amount;
+    private BigDecimal vat;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getExpenseDate() {
+        return expenseDate;
+    }
+
+    public void setExpenseDate(Date expenseDate) {
+        this.expenseDate = expenseDate;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public BigDecimal getVat() {
+        return vat;
+    }
+
+    public void setVat(BigDecimal vat) {
+        this.vat = vat;
+    }
 }

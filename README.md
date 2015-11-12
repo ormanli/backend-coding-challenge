@@ -28,6 +28,8 @@ Notes
 * Modify [application.properties](https://github.com/ormanli/backend-coding-challenge/blob/master/src/main/resources/application.properties) for db properties.
 * This application creates database tables automatic at boot. You don't need any sql script. Please configure database properties.
 
+[Latest Release](https://github.com/ormanli/backend-coding-challenge/releases/latest)
+====
 
 ---
 

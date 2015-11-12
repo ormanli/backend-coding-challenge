@@ -3,6 +3,7 @@ package com.serdarormanli.alchemytec.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.Date;
 import java.util.Optional;
 
@@ -72,11 +73,11 @@ public class ExpenseData {
     public Expense convertToExpense() {
         Expense result = new Expense();
 
-        result.amount = this.amount;
-        result.expenseDate = this.date;
-        result.reason = this.reason;
+        result.setAmount(this.amount);
+        result.setExpenseDate(this.date);
+        result.setReason(this.reason);
         //Optional used if vat is not exists at input
-        result.vat = Optional.ofNullable(this.vat).orElse(this.amount.multiply(VAT).divide(TOTAL));
+        result.setVat(Optional.ofNullable(this.vat).orElse(this.amount.multiply(VAT, MathContext.DECIMAL128).divide(TOTAL, MathContext.DECIMAL128)));
 
         return result;
     }
@@ -86,6 +87,6 @@ public class ExpenseData {
      */
     @JsonIgnore
     public static ExpenseData convertToThis(Expense expense) {
-        return new ExpenseData(expense.expenseDate, expense.reason, expense.amount, expense.vat);
+        return new ExpenseData(expense.getExpenseDate(), expense.getReason(), expense.getAmount(), expense.getVat());
     }
 }
